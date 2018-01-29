@@ -71,7 +71,7 @@ class Conversion extends React.Component {
                   <tr key={item.currency} className={
                       (item.currency == "USD" || item.currency == "BTC") ? 'bold' : ''
                     }>
-                    <td data-label="Currency">{item.currency}</td>
+                    <td data-label="Currency">💱 {item.currency}</td>
                     <td data-label="Rate">{item.rate}</td>
                   </tr>
                 )

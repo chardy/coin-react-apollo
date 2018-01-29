@@ -42,7 +42,7 @@ class Stat extends React.Component {
     return (
       <div className="grid">
         <div className="col-12">
-          <button className={`button-primary button ${loading && 'loading'}`} onClick={this.refeshHandle}>Refresh</button>
+          <button className={`button-success button ${loading && 'loading'}`} onClick={this.refeshHandle}>Refresh</button>
         </div>
         <div className="col-12">
           <h4 className="title">Data source from <a href="https://coinmarketcap.com/api/">api.coinmarketcap.com</a> at {moment.unix(stats[0].lastUpdated).format("HH:mm:ss")}</h4>
