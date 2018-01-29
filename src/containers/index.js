@@ -2,6 +2,7 @@ import React from 'react'
 
 import Conversion from './components/conversion'
 import Stats from './components/stat'
+import ConvertCurrency from './components/convert_currency'
 
 class Index extends React.Component {
 
@@ -37,7 +38,7 @@ class Index extends React.Component {
             <label className="tab-label" htmlFor="tab-2">Stats</label>
             <div className="tab-panel">
               <div className="tab-content">
-                <Stats />
+                <Stats route={this.props.route} />
               </div>
             </div>
           </div>
@@ -47,7 +48,7 @@ class Index extends React.Component {
             <label className="tab-label" htmlFor="tab-3">Convert Currency</label>
             <div className="tab-panel">
               <div className="tab-content">
-                <h3>Why would this be cool?</h3>
+                <ConvertCurrency route={this.props.route} />
               </div>
             </div>
           </div>

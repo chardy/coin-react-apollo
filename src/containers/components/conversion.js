@@ -16,7 +16,7 @@ class Conversion extends React.Component {
     if (value) {
       try {
         const { GqlQueryGetRatesByCurrency  } = this.props
-        const response = GqlQueryGetRatesByCurrency.refetch({currency: value})
+        const response = await GqlQueryGetRatesByCurrency.refetch({currency: value})
         this.setState({selected: value}, () => {
           window.history.pushState( null, null, `/?currency=${this.state.selected.toLowerCase()}` )
         })

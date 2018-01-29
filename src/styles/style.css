@@ -56,3 +56,7 @@
   animation: animation-rotate 750ms linear infinite;
   background-color: white;
 }
+.title {
+  margin: 10px 0;
+  font-weight: 500;
+}
