@@ -99,7 +99,14 @@ class ConvertCurrency extends React.Component {
                           <h3>{item.base.symbol.toUpperCase()}</h3>
                           <p>{item.base.name}</p>
                         </td>
-                        <td className="text-right">{`${formatPrice(item.price.price, "$")}`}</td>
+                        <td className="text-right">
+                          {
+                            this.state.currency == 'usd' ?
+                              `${formatPrice(item.price.price, "$")}`
+                              :
+                              item.price.price
+                          }
+                        </td>
                       </tr>
                     )
                 }
