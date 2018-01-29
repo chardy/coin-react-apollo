@@ -14,7 +14,16 @@
   margin-left: 15px;
   display: inline-block;
 }
+.stat-table th, .stat-table td {
+  text-align: left !important;
+}
 .bold {
   font-weight: bold;
   text-decoration: underline;
+}
+.minus {
+  color: #da0101;
+}
+.plus {
+  color: #00a700;
 }

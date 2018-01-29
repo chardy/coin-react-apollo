@@ -5,7 +5,7 @@ import {
   Index
 } from './routers'
 import { ApolloProvider } from 'react-apollo'
-import client from './connectors/apollo'
+import {client} from './connectors/apollo'
 
 import './style.global.css';
 
