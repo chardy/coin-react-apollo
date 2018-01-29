@@ -3,7 +3,13 @@ import {graphql, compose} from 'react-apollo'
 import GqlQueryCurrencies from './../../graphql/queries/allCurrencies'
 import GqlQueryGetRatesByCurrency from './../../graphql/queries/getRatesByCurrency'
 
+const queryString = require('query-string')
+
 class Conversion extends React.Component {
+
+  state = {
+    selected: selected
+  }
 
   handleChangeCurrency = (e) => (async () => {
     const value = e.target.value
@@ -11,6 +17,9 @@ class Conversion extends React.Component {
       try {
         const { GqlQueryGetRatesByCurrency  } = this.props
         const response = GqlQueryGetRatesByCurrency.refetch({currency: value})
+        this.setState({selected: value}, () => {
+          window.history.pushState( null, null, `/?currency=${this.state.selected.toLowerCase()}` )
+        })
       } catch (e) {
 
       }
@@ -34,10 +43,10 @@ class Conversion extends React.Component {
         <div className="col-12">
           <span>Currency</span>
           <div className="conversion-list">
-            <select className="button-large" onChange={this.handleChangeCurrency}>
+            <select className="button-large" onChange={this.handleChangeCurrency} value={this.state.selected.toUpperCase()}>
               {
                 currencies.map((currency, index) =>
-                  <option key={currency.id} value={currency.id}>{currency.name}</option>
+                  <option key={currency.id} value={currency.id}>{currency.id}</option>
                 )
               }
             </select>
@@ -70,16 +79,20 @@ class Conversion extends React.Component {
   }
 }
 
+let selected = "USD"
+
 export default compose(
   graphql(GqlQueryCurrencies, {
     name: 'GqlQueryCurrencies'
   }),
   graphql(GqlQueryGetRatesByCurrency, {
     name: 'GqlQueryGetRatesByCurrency',
-    options: () => {
+    options: ({route}) => {
+      let query = queryString.parse(route.location.search)
+      selected = query.currency || selected
       return {
         variables: {
-          currency: "USD"
+          currency: selected
         }
       }
     }

@@ -27,7 +27,7 @@ class Index extends React.Component {
             <label className="tab-label" htmlFor="tab-1">All Conversion</label>
             <div className="tab-panel">
               <div className="tab-content">
-                <Conversion />
+                <Conversion route={this.props.route} />
               </div>
             </div>
           </div>

@@ -15,11 +15,11 @@
   display: inline-block;
 }
 .stat-table th, .stat-table td {
-  text-align: left !important;
+  text-align: right !important;
 }
 .bold {
   font-weight: bold;
-  text-decoration: underline;
+  background-color: #dedede;
 }
 .minus {
   color: #da0101;
