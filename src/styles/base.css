@@ -6,22 +6,22 @@ html {
 
 /*  16px */
   /*font-size: 100%; */
-  
+
 /*  15px */
-font-size: 93.8%; 
-  
+font-size: 93.8%;
+
 /*  14px */
 /*font-size: 87.5%; */
-  
+
 /*  12px */
 /*  font-size: 75%;*/
-  
+
 /*  10px */
 /*  font-size: 62.5%;*/
-  
+
 }
 
-body {  
+body {
   /*  San Serif */
   /*  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;*/
   /*  font-family: Copperplate, "Copperplate Gothic Light", fantasy;*/
@@ -37,8 +37,9 @@ body {
   /*  font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;*/
   /*  font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;*/
   /*  font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;*/
-  
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   /*font-family: 'Open Sans', sans-serif;*/
 }
 
@@ -72,8 +73,12 @@ ul li, ol li {
   margin: 0;
 }
 
+h2 img {
+  height: 24px;
+}
+
 .wrapper {
-  max-width: 1280px;
+  max-width: 1024px;
   margin: 0 auto;
   padding: 0 1em;
 }

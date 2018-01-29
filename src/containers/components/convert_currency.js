@@ -65,32 +65,35 @@ class ConvertCurrency extends React.Component {
     return (
       <div className="grid">
         <div className="col-12">
-          <table>
+          <h4 className="title">Data source from <a href="https://cryptowat.ch/docs/api">api.cryptowat.ch</a> REST API</h4>
+          <table className="half-width">
+            <thead>
+              <tr>
+                <td>
+                  Exchange&nbsp;
+                  <select className="button-large" value={this.state.market} onChange={this.onChangeHandle.bind(this, 'market')}>
+                    {
+                      (exchanges && exchanges.length > 0) &&
+                        exchanges.map((item, index) =>
+                          <option key={item.symbol} value={item.symbol}>{item.name}</option>
+                        )
+                    }
+                  </select>
+                </td>
+                <td>
+                  Currency&nbsp;
+                  <select className="button-large" value={this.state.currency} onChange={this.onChangeHandle.bind(this, 'currency')}>
+                    {
+                      (fiatAssets && fiatAssets.length > 0) &&
+                        fiatAssets.map((item, index) =>
+                          <option key={item.id} value={item.symbol}>{item.symbol.toUpperCase()}</option>
+                        )
+                    }
+                  </select>
+                </td>
+              </tr>
+            </thead>
             <tbody>
-                <tr>
-                  <td>
-                    Exchange&nbsp;
-                    <select className="button-large" value={this.state.market} onChange={this.onChangeHandle.bind(this, 'market')}>
-                      {
-                        (exchanges && exchanges.length > 0) &&
-                          exchanges.map((item, index) =>
-                            <option key={item.symbol} value={item.symbol}>{item.name}</option>
-                          )
-                      }
-                    </select>
-                  </td>
-                  <td>
-                    Currency&nbsp;
-                    <select className="button-large" value={this.state.currency} onChange={this.onChangeHandle.bind(this, 'currency')}>
-                      {
-                        (fiatAssets && fiatAssets.length > 0) &&
-                          fiatAssets.map((item, index) =>
-                            <option key={item.id} value={item.symbol}>{item.symbol.toUpperCase()}</option>
-                          )
-                      }
-                    </select>
-                  </td>
-                </tr>
                 {
                   getMarketExchange && getMarketExchange.length > 0 &&
                     getMarketExchange.map((item, index) =>

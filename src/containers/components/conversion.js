@@ -57,7 +57,8 @@ class Conversion extends React.Component {
           </div>
         </div>
         <div className="col-12">
-          <table className="full-width">
+          <h4 className="title">Data source from <a href="https://developers.coinbase.com/api/v2">Coinbase V2</a> REST API</h4>
+          <table className="half-width">
             <thead>
               <tr>
                 <th>Currency</th>
