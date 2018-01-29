@@ -7,3 +7,7 @@ export const formatCount = (count, withAbbr = false, decimals = 3) => {
   }
   return result;
 }
+
+export const formatPrice = (n, currency) => {
+    return currency + " " + n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+}

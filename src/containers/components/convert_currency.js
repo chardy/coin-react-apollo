@@ -4,11 +4,14 @@ import GqlQueryAllExchanges from './../../graphql/queries/allExchanges'
 import GqlQueryAllAssetsIsFiat from './../../graphql/queries/allAssets'
 import GqlQueryGetMarketExchange from './../../graphql/queries/getMarketExchange'
 
+const queryString = require('query-string')
+import {formatPrice} from './format'
+
+
 class ConvertCurrency extends React.Component {
 
   state = {
-    market: 'kraken',
-    currency: 'usd'
+    market, currency
   }
 
   onChangeHandle = (type, e) => (async () => {
@@ -17,8 +20,10 @@ class ConvertCurrency extends React.Component {
       let market, currency
       if (type == 'market') {
         market = value
+        currency = this.state.currency
       } else {
         currency = value
+        market = this.state.market
       }
       try {
         const { GqlQueryGetMarketExchange  } = this.props
@@ -27,6 +32,8 @@ class ConvertCurrency extends React.Component {
         })
         this.setState({
           market, currency
+        }, () => {
+          window.history.pushState( null, null, `/market=${this.state.market}&currency=${this.state.currency}` )
         })
       } catch (e) {
 
@@ -35,12 +42,20 @@ class ConvertCurrency extends React.Component {
   })()
 
   render() {
-    const { GqlQueryAllExchanges, GqlQueryAllAssetsIsFiat, GqlQueryAllAssetsNoneFiat, GqlQueryGetMarketExchange } = this.props
+    const { GqlQueryAllExchanges, GqlQueryAllAssetsIsFiat, GqlQueryGetMarketExchange } = this.props
     if (
+      (GqlQueryAllExchanges && GqlQueryAllExchanges.error) ||
+      (GqlQueryAllExchanges && GqlQueryAllExchanges.loading) ||
+      (GqlQueryAllAssetsIsFiat && GqlQueryAllAssetsIsFiat.error) ||
+      (GqlQueryAllAssetsIsFiat && GqlQueryAllAssetsIsFiat.loading)||
       (GqlQueryGetMarketExchange && GqlQueryGetMarketExchange.error) ||
       (GqlQueryGetMarketExchange && GqlQueryGetMarketExchange.loading)
     ) {
-      return <div></div>
+      return (
+        <div className="loading-section">
+          <div className="spin-loading"></div>
+        </div>
+      )
     }
 
     const { exchanges } = GqlQueryAllExchanges
@@ -84,7 +99,7 @@ class ConvertCurrency extends React.Component {
                           <h3>{item.base.symbol.toUpperCase()}</h3>
                           <p>{item.base.name}</p>
                         </td>
-                        <td>{`$ ${item.price.price}`}</td>
+                        <td className="text-right">{`${formatPrice(item.price.price, "$")}`}</td>
                       </tr>
                     )
                 }
@@ -97,6 +112,8 @@ class ConvertCurrency extends React.Component {
   }
 }
 
+let market = 'kraken'
+let currency = 'usd'
 export default compose(
   graphql(GqlQueryAllExchanges, {
     name: 'GqlQueryAllExchanges'
@@ -111,11 +128,15 @@ export default compose(
   }),
   graphql(GqlQueryGetMarketExchange, {
     name: 'GqlQueryGetMarketExchange',
-    options: () => ({
-      variables: {
-        market: 'kraken',
-        currency: 'usd'
+    options: ({route}) => {
+      const query = queryString.parse(route.location.search)
+      market = query.currency || market
+      currency = query.currency || currency
+      return {
+        variables: {
+          market, currency
+        }
       }
-    })
+    }
   }),
 ) (ConvertCurrency)

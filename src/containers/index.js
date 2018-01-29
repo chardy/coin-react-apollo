@@ -13,6 +13,7 @@ class Index extends React.Component {
   changeTabHandle = (e) => (async () => {
     if (e) {
       this.setState({checked: e}, () => {
+        window.history.pushState( null, null, `/` )
       })
     }
   })()
