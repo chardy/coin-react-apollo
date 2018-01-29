@@ -1,0 +1,98 @@
+table.full-width {
+    width: 100%;
+}
+
+table {
+  border: 1px solid #ccc;
+  margin:0;
+  padding:0;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table thead {
+    background-color: #e0e0e0;
+    color: #000;
+    text-align: left;
+    vertical-align: bottom;
+}
+
+/*
+striping:
+   even - #fff (white)
+   odd  - #f2f2f2 (light gray)
+*/
+table td {
+    background-color: transparent;
+}
+table.table-odd td {
+    background-color: #f2f2f2;
+}
+
+/* nth-child selector for modern browsers */
+table.table-striped tr:nth-child(2n-1) td {
+    background-color: #f2f2f2;
+}
+
+/* HORIZONTAL BORDERED TABLES */
+
+.table-horizontal td,
+.table-horizontal th {
+    border-width: 0 0 1px 0;
+    border-bottom: 1px solid #cbcbcb;
+}
+.table-horizontal tbody > tr:last-child > td {
+    border-bottom-width: 0;
+}
+
+table tr {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: center;
+}
+
+table th {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+@media screen and (max-width: 35.5em) {
+
+  table {
+    border: 0;
+    width: 100%;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table tr {
+    margin-bottom: 10px;
+    display: block;
+    border-bottom: 2px solid #ddd;
+  }
+
+  table td {
+    display: block;
+    text-align: right;
+    font-size: 13px;
+    border-bottom: 1px dotted #ccc;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+  table td:before {
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}

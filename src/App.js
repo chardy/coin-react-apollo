@@ -1,25 +1,21 @@
 import React from 'react'
-import { Router, Link } from 'react-static'
+import { Router, Link, Switch, Route, } from 'react-static'
 //
-import Routes from 'react-static-routes'
-//
+import {
+  Index
+} from './routers'
 import { ApolloProvider } from 'react-apollo'
 import client from './connectors/apollo'
 
-import './app.css'
+import './style.global.css';
 
 export default () => (
   <ApolloProvider client={client}>
     <Router>
-      <div>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/blog">Blog</Link>
-        </nav>
-        <div className="content">
-          <Routes />
-        </div>
+      <div className="content">
+        <Switch>
+          <Route exact path="/" component={Index} />
+        </Switch>
       </div>
     </Router>
   </ApolloProvider>

@@ -1,0 +1,20 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.content {
+  padding: 20px;
+  width: 1152px;
+  margin: auto;
+}
+.tab-content {
+  padding: 20px !important;
+}
+.conversion-list {
+  margin-left: 15px;
+  display: inline-block;
+}
+.bold {
+  font-weight: bold;
+  text-decoration: underline;
+}
