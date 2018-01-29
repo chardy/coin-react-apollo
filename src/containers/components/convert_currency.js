@@ -33,7 +33,7 @@ class ConvertCurrency extends React.Component {
         this.setState({
           market, currency
         }, () => {
-          window.history.pushState( null, null, `/market=${this.state.market}&currency=${this.state.currency}` )
+          window.history.pushState( null, null, `/?market=${this.state.market}&currency=${this.state.currency}` )
         })
       } catch (e) {
 
@@ -130,7 +130,7 @@ export default compose(
     name: 'GqlQueryGetMarketExchange',
     options: ({route}) => {
       const query = queryString.parse(route.location.search)
-      market = query.currency || market
+      market = query.market || market
       currency = query.currency || currency
       return {
         variables: {
