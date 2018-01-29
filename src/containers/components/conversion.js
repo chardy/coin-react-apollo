@@ -34,7 +34,11 @@ class Conversion extends React.Component {
       (GqlQueryCurrencies && GqlQueryCurrencies. error) ||
       (GqlQueryGetRatesByCurrency && GqlQueryGetRatesByCurrency.loading) ||
       (GqlQueryGetRatesByCurrency && GqlQueryGetRatesByCurrency.loading) ) {
-      return <div>Loading</div>
+      return (
+        <div className="loading-section">
+          <div className="spin-loading"></div>
+        </div>
+      )
     }
     const { currencies } = GqlQueryCurrencies
     const { rates } = GqlQueryGetRatesByCurrency

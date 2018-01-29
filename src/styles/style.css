@@ -27,3 +27,32 @@
 .plus {
   color: #00a700;
 }
+.loading-section {
+  position: relative;
+}
+.spin-loading {
+  position: absolute;
+  left: 50%
+}
+.spin-loading:before {
+  margin: -10px 0 0 -10px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  content: '';
+  -webkit-border-radius: 20px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 20px;
+  -moz-background-clip: padding;
+  border-radius: 20px;
+  background-clip: padding-box;
+  border: rgba(0, 0, 0, 0.1) 2px solid;
+  border-top-color: #2e9ff3;
+  -webkit-animation: animation-rotate 750ms linear infinite;
+  -moz-animation: animation-rotate 750ms linear infinite;
+  -o-animation: animation-rotate 750ms linear infinite;
+  animation: animation-rotate 750ms linear infinite;
+  background-color: white;
+}
